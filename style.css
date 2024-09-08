@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sevillana&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif;  
+}
+
+#heading{
+    text-align:center;
+    font-family: "Jacques Francois Shadow", serif;
+    font-size:60px;
+    text-decoration-line: underline;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:800px;
+    margin:20px auto
+}
+
+h2{
+    font-size:24px;
+    margin-top: 25px;
+}
+
+p{
+    line-height: 1.9;
+}
+
+img {
+    margin: 20px; /* Adds 20px of space around each image */
+    max-width: 100%; /* Ensures images do not overflow their container */
+    height: auto; /* Maintains the aspect ratio of the images */
+    display: block; /* Prevents images from having inline space issues */
+}
+
+li{
+    margin-bottom: 5px;
+    margin: left 40px;
+}
+

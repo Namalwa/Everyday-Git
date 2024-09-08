@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Everyday Git</title>
+</head>
+<body>
+    <div class="container">
+    <h1 id="heading">Everyday Git</h1>
+    <h2>What is Git?</h2>
+    <p>Git is a distributed version control system (VCS) that helps developers manage their code efficiently, allowing teams to collaborate on projects without overriding one another's work. Created by Linus Torvalds in 2005, Git is now one of the most widely used version control tools in the world, and it is particularly valued for its speed, flexibility, and powerful branching capabilities.</p>
+    <h3>What is a version control system?</h3>
+    <p>A version control system is a tool that records changes made to files, allowing you to track modifications over time. This system enables multiple developers to work on the same codebase concurrently while keeping a detailed history of changes. It also allows you to revert to previous versions if something goes wrong, compare changes, and understand the contributions of each team member.</p>
+    <p>Here is how a VCS works in practice</p>
+    <ul>
+        <li><b>Version tracking:</b> As changes are made to files, a version control system stores these updates as a series of snapshots.</li>
+        <li><b>Collaboration:</b>Multiple people can work on a project simultaneously, merging changes together, and resolving conflicts when they arise.</li>
+        <li><b>Branching: </b>You can create branches to test new features or changes without affecting the main codebase. Once you are satisfied with the changes, they can be merged back into the primary branch.</li>
+    </ul>
+    <h3>Other version control systems</h3>
+    <ol>
+        <li><b>Subversion (SVN):</b> A centralized VCS where all changes are made in a single, central repository.</li>
+        <li><b>Mercurial:</b>Another distributed VCS similar to Git, but with a simpler design and ease of use.</li>
+        <li><b>Perforce:</b>A centralized VCS used mostly in large enterprise environments for handling huge codebases.</li>
+        <li><b>CVS (Concurrent Versions System):</b>An older version control system, now largely obsolete, but still in use in some legacy projects.</li>
+    </ol>
+    <p>In this blog, we will be diving deep into Git and its seamless integration with GitHub, a platform built for hosting Git repositories and facilitating collaboration across the globe.</p>
+    <h2>Installation and Setup of Git</h2>
+    <h3>Check if Git is installed</h3>
+    <p>The first step is to check whether Git is installed on your machine. Follow the steps below depending on your operating system.</p>
+    <ol>
+    <li><b>For Windows/Mac/Linux:</b></li>
+    <ul>
+      <li>Open a terminal or command prompt:</li>
+      <li><b>Windows:</b>Open "Command Prompt" or "Git Bash."</li>
+      <li><b>Mac:</b>Open "Terminal."</li>
+      <li><b>Linux:</b>Open your default terminal.</li>
+    </ul>
+    <li><b>Run the following command to check if Git is installed:</b></li>
+    <img src="./images/git.jpg" alt="checking if git is installed">
+    <p>If Git is installed, you should see an output of the version:</p>
+    <img src="./images/gitversion.jpg" alt="image displaying git version">
+    </ol>
+    <h2>Configuring Git</h2>
+    <p>Once Git is installed, it is important to configure your identity, which Git uses to record who made changes to the repository. This involves setting your <b>username</b> and <b>email address</b>. This information will be associated with every Git commit you make and is required for proper version control.</p>
+    <p><b>Steps to Configure Git Username and Email:</b></p>
+    <ol>
+       <li>Open your terminal or Git Bash (on Windows, you can use either Command Prompt).</li> 
+       <li>Set your username by running the following command:</li>
+       <img src="./images/sampleusername.png" alt="sample of how to configure username">
+       <p>For example if my username is "Namalwa" you will enter as follows:</p>
+       <img src="./images/username.jpg" alt="configuring username on git">
+       <li>Set your email address by running the following command:</li>
+       <img src="./images/sampleemail.png" alt="sample of how to configure email">
+       <p>For example if your email is namalwanina.com you will enter as follows:</p>
+       <img src="./images/email.jpg" alt="configuring email address">
+       <li>Verify your configuration by running:</li>
+       <img src="./images/verify.jpg" alt="verifying username and email adress">
+       <p>You should see something like:</p>
+       <img src="./images/name.jpg" alt="username is displayed">
+       <p>Email adress</p>
+       <img src="./images/emailaddress.jpg" alt="emailaddress is displayed">
+    </ol>
+    <h2>Intializing a Git repository</h2>
+    <p>A <b>Git repository</b> is a storage space that tracks all the changes you make to your project files. It stores all your project files, along with the history of every change made to those files, making it easier to collaborate, manage versions, and revert to previous states if necessary. Git repositories can be local (on your machine) or remote (on services like GitHub).</p>
+    <h3>How to Initialize a Git Repository</h3>
+    <p>When you initialize a Git repository, you are essentially telling Git to start tracking changes in a specific folder or project.</p>
+    <p>Steps to Initialize a Git Repository:</p>
+    <ol>
+        <li>Open your terminal or Git Bash.</li>
+        <li>Navigate to the project folder where you want to create a repository. You can do this by using the cd command:</li>
+        <img src="./images/navigate.jpg" alt="project where i want to create a repository">
+        <li>Initialize the repository by running the following command:</li>
+        <img src="./images/git init.jpg" alt="initializing git">
+        <p>This command creates a hidden .git directory in the folder, where Git stores all the information it needs to track changes in your project.</p>
+    </ol>
+    <p><b>What happens after initialization</b></p>
+    <ul>
+        <li>A .git folder will be created inside your project folder. This folder contains all the metadata that Git uses to track the project’s history.</li>
+        <li>Your project is now a Git repository, but it’s not tracking any files yet. To start tracking files, yo will need to add and commit them (explained in later steps).</li>
+    </ul>
+    <p><b>Verify Your Repository Initialization</b></p>
+    <p>After running the git init command, you can check if Git is correctly initialized by running:</p>
+    <img src="./images/gitstatus.jpg" alt="check if git is initialised">
+    <p>If the repository is initialized, you’ll see a message like:</p>
+    <img src="./images/repository.jpg" alt="display master as branch and no commits">
+    <h2>Adding files to the staging area</h2>
+    <p>The staging area (also known as the "index") in Git is an intermediate space where you prepare changes before committing them to the repository. It’s like a rough draft that allows you to review what will be committed. Files in the staging area are tracked by Git but not yet part of the permanent project history.</p>
+        <p><b>Understanding Tracked vs Untracked Files</b></p>
+        <ul>
+            <li><b>Tracked Files:</b>These are files that are being monitored by Git. Any changes you make to tracked files can be added to the staging area and eventually committed.</li>
+            <li><b>Untracked Files:</b>These are files that Git isn’t yet aware of. If you create new files in your project directory, they are untracked by default until you explicitly add them to the repository.</li>
+        </ul>
+        <p><b>Steps to Add Files to the Staging Area</b></p>
+        <ol>
+            <li>Open your terminal or Git Bash and navigate to your project directory.</li>
+            <li>Check the status of your repository by running:</li>
+            <img src="./images/status.jpg" alt="satus initialization">
+       <p>Git will display a list of untracked files and any changes made to tracked files.</p>
+        <img src="./images/untracked.jpg" alt="untracked files">
+        <li><b>Add files to the staging area:</b></li>
+        <p>To start tracking untracked files, or to add changes made to tracked files to the staging area, use the git add command:</p>
+        <img src="./images/gitadd.jpg" alt="git add to add files">
+        <p>Example:</p>
+        <img src="./images/example.jpg" alt="example of adding file">
+        <p>This command moves the file newfile.txt from untracked to tracked and stages it for commit.</p>
+    </ol>
+    <p><b>Staging Multiple Files</b></p>
+    <p>Add all files (tracked and untracked) to the staging area by using:</p>
+    <img src="./images/add.jpg" alt="adding all files">
+    <p>The period (.) tells Git to add all changes in the current directory to the staging area.</p>
+    <p><b>Verify Staged Files</b></p>
+    <p>After adding files, you can check which files are in the staging area by running "git status"</p>
+    <p>Now, your files will be shown as staged for commit, with a message like:</p>
+    <img src="./images/addedfiles.jpg" alt="files added">
+    <h2>Committing changes</h2>
+    <p>After adding files to the staging area, the next step is to commit these changes to the Git repository. A commit represents a snapshot of your project at a specific point in time. It’s like a "save" in a video game, where Git stores the current state of your files.</p>
+    <h3>Steps to Commit Changes</h3>
+    <ol>
+        <li>Ensure your files are staged by running "git status"</li>
+        <p>You should see the changes that are staged for commit.</p>
+        <img src="./images/nocommits.jpg" alt="git status no commits yet">
+        <li>Commit your changes using the following command:</li>
+        <img src="./images/commitchanges.jpg" alt="committing changes">
+        <ul>
+            <li>The -m option allows you to provide a commit message.</li>
+            <li>A good commit message should be concise but descriptive, explaining what changes were made and why.</li>
+            <p>Example:</p>
+            <img src="./images/commitexample.jpg" alt="example of committing">
+        </ul>
+    </ol>
+    <h4>How to Write Good Commit Messages</h4>
+    <p>A well-written commit message helps others (and your future self) understand why a change was made. Follow these guidelines for good commit messages:</p>
+    <ol>
+        <li>Use the imperative mood (as if you’re giving a command). For example:</li>
+        <ul>
+        <li>Bad: "Fixed a bug in the login feature"</li>
+        <li>Good: "Fix bug in login feature"</li>
+        </ul>
+        <li>Keep the message short but descriptive. Aim for under 50 characters in the subject line. If necessary, you can add a more detailed description after the first line.</li>
+        <li>Explain the why, not just the what. Focus on the reason for the change, not just the code you wrote.</li>
+        <li>Examples of good commit messages:</li>
+        <ul>
+        <li>"Add validation to user registration form"</li>
+        <li>"Fix broken link in homepage footer"</li>
+        <li>"Refactor database connection code for performance"</li>
+    </ul>
+    </ol>
+    <h4>Viewing Past Commits</h4>
+    <p>Git allows you to view the history of all commits made in a repository. This is useful for tracking changes and understanding the evolution of your project.</p>
+    <ul>
+        <li>To view the commit history, run:</li>
+    </ul>
+    <img src="./images/commithistory.jpg" alt="viewingg commit history">
+    <p>This command displays a list of all past commits, including the commit hash (unique ID), author, date, and commit message.</p>
+    <img src="./images/gitlog.jpg" alt="a list of past commits">
+    <h4>Going Back to a Specific Commit</h4>
+    <p>Sometimes, you may want to revert your project to an earlier state based on a specific commit. You can do this using the commit hash from the git log command.</p>
+    <h5>How to Reset to a Specific Commit</h5>
+    <p>To go back to a specific commit (in your working directory), use:</p>
+    <img src="./images/gitcheckout.jpg" alt="going backk to a specific commit">
+    <p>Replace <commit-hash> with the unique identifier of the commit you want to revert to. This puts you in a "detached HEAD" state, meaning you're viewing an old snapshot without updating the latest branch.</p>
+        <p>Example:git checkout f3b12d3400a17f8dba7d29ec8a1a3c78a91a1a7e</p>
+        <h4>Returning to the Latest Commit</h4>
+        <p>If you want to go back to the latest commit after viewing or testing an older commit, you can switch back to your branch:</p>
+        <img src="./images/checkout.jpg" alt="going back to latest commit">
+        <h2>Branches in Git</h2>
+        <p>A branch in Git is essentially a separate version of the code that allows you to work on different features or fixes in isolation. Every Git repository starts with a default branch called master (or main in newer Git versions), which represents the primary version of the project. However, branches allow you to create independent environments to work on new features, bug fixes, or experimental ideas without affecting the main codebase.</p>
+        <h3>Why Are Branches Important?</h3>
+        <ol>
+            <li>Isolated Development: Branches allow developers to work on new features or fixes without disrupting the stable codebase. This means that even if your code is incomplete or buggy, it won’t interfere with the main project until you're ready to merge it.</li>
+            <li>Collaboration: In teams, multiple people can work on different branches simultaneously. For instance, one developer might work on a new feature while another fixes a bug, and each can do so in their own branch.</li>
+            <li>Safe Experimentation: Branches provide a safe environment to try out new ideas or make major changes. If something goes wrong, it’s easy to discard the branch without affecting the main project.</li>
+            <li>Version Control: Branches allow teams to maintain different versions of the project. For example, a branch for the current release can be kept separate from a branch where new features are being developed for the next release.</li>
+        </ol>
+        <h3>How Branches Work in Git</h3>
+        <p>A branch is essentially a pointer to a specific commit in Git's history. As you make new commits on a branch, Git advances the pointer to reflect the latest state of your project.</p>
+        <p>By default, you're on the master or main branch when you start a project, but you can create as many branches as you need to organize your workflow.</p>
+        <h3>Common Use Cases for Branches</h3>
+        <ul>
+            <li>Feature Branches: When you’re working on a new feature, you can create a branch dedicated to that feature. This allows you to develop, test, and make commits without impacting the stable code on the master branch.</li>
+            <li>Bug Fixes: You can create a branch specifically for fixing bugs. Once the bug is fixed and tested, you can merge the changes back into the main branch.</li>
+            <li>Hotfixes: Sometimes urgent changes need to be made to the live version of a project. You can create a branch for the hotfix, apply the fix, and merge it back quickly without disrupting other ongoing work.</li>
+        </ul>
+        <h2>Creating a branch</h2>
+        <p>In Git, creating a new branch is an essential step when you want to work on a feature, fix a bug, or experiment with changes without affecting the main codebase. Creating branches allows you to isolate your work and ensure the stability of your project until your work is complete and ready to be merged.</p>
+        <h3>Viewing branches</h3>
+        <p>Use the command git branch to view your existing branches.
+            The active branch will have a little asterisk symbol (*) beside it and in some command line interfaces will be green in color.</p>
+            <img src="./images/gitbranch.jpg" alt="viewing branches">
+            <h2>Viewing all branches</h2>
+           <p>To create a branch, we use the command:</p> 
+           <img src="./images/branchname.jpg" alt="creating a branch">
+           <p>Replace BRANCH_NAME with your preferred branch name, for example, if we want to create a branch called chapter1:"git branch chapter1"</p>
+           <p>This will simply create a branch but will not switch to it.
+            We can prove this by running the git branch command:</p>
+            <img src="./images/creatingbranch.jpg" alt="creating a branch">
+            <p>We see that we now have two branches, chapter1 and master but master is the active one since it is the one with the asterisk symbol beside it.</p>
+            <h2>Switching active branches</h2>
+            <p>Switching branches means changing the active branch.
+                To switch branches, we use the command:"git switch BRANCH_NAME"</p>
+                <p>Replace BRANCH_NAME with the name of the branch, for example, if we want to make chapter1 the active branch (switching to it):"git switch chapter1"</p>
+                <p>This will change the active branch from master to chapter1, we can prove this by running the git branch command:</p>
+                <img src="./images/switchbranch.jpg" alt="switching a branch">
+                <p>We now see the asterisk symbol beside the chapter1 branch which means that this branch is the active branch.</p>
+                <h2>Merging a branch</h2>
+                <p>Assuming our official branch is called 'main' and we have content in a branch called 'chapter1' that we want to merge into main.We start by switching to the main branch where we want to merge the changes from 'chapter1'. "git switch main"</p>
+                <p>We then use the git merge to merge the content from chapter1 to main."git merge chapter1"</p>
+                <img src="./images/merging.jpg" alt="merging branches">
+                <h2>Deleting a branch</h2>
+                <p>After you've successfully merged your branch into the main branch (e.g., master or main), it's good practice to delete the branch to keep your Git repository clean and organized. This helps avoid clutter from outdated or unused branches.</p>
+                <ol>
+                    <li>Ensure the branch is fully merged:</li>
+                    <p> Before deleting a branch, make sure that the changes have already been merged into the main branch. You can verify this with:</p>
+                    <img src="./images/merged.jpg" alt="check merged image">
+                    <li>Switch to another branch (usually master or main):</li>
+                    <p>You cannot delete a branch you are currently on, so make sure you are on a different branch (such as master) before proceeding:</p>
+                    <img src="./images/switchmaster.jpg" alt="switching to another branch">
+                    <li>Delete the branch using the git branch -d command:</li>
+                    <img src="./images/delete.jpg" alt="deleting a branch">
+                    <p>Replace <branch-name> with the name of the branch you want to delete.</p>
+                        <li>This force-deletes the branch, regardless of whether it has been merged.</li>
+                        <img src="./images/deletebranch.jpg" alt="deleting a branch without merging">
+                </ol>
+                <h3>Verify Branch Deletion</h3>
+                <p>To confirm that the branch has been deleted, you can list all remaining branches with:"git branch"</p>
+                <p>This will show all existing branches in the repository. If the branch was deleted, it will no longer appear in the list.</p>
+                <h2>Next Steps in Your Git Learning Journey</h2>
+                <p>Now that you've mastered the basics of Git — such as creating repositories, committing changes, using branches, and merging them — you're ready to dive deeper into Git's powerful features and related tools. Here are some recommended next steps:</p>
+                <ol>
+                    <li><b>Learn About Remote Repositories (e.g., GitHub, GitLab, Bitbucket)</b></li>
+                    <p>After mastering local Git repositories, the next important concept is remote repositories. Remote repositories allow you to collaborate with other developers by pushing your local commits to a server (e.g., GitHub, GitLab, or Bitbucket) and pulling changes from others. Some key concepts to explore:</p>
+                    <ul>
+                        <li><b>Pushing and pulling changes:</b>Learn how to sync your local changes with a remote repository using commands like git push and git pull.</li>
+                        <li><b>Cloning a repository:</b>Understand how to copy an existing remote repository to your local machine with git clone.</li>
+                        <li><b>Forking and Pull Requests (on GitHub):</b>If you plan to contribute to open-source projects, understanding how to fork a project and submit pull requests is crucial.</li>
+                        <p><b>Next step:</b>Set up an account on GitHub (or another platform) and push your local repository to it. You can explore how to create repositories, fork projects, and collaborate with others.
+                        </p>
+                    </ul>
+                    <li><b>Advanced Git Features</b></li>
+                    <p>As you grow more comfortable with Git, you can explore more advanced commands and features:</p>
+                    <ul>
+                        <li><b>Rebasing:</b> Learn how to reapply your commits on top of another branch's history with git rebase. This can help you maintain a cleaner project history.</li>
+                        <li><b>Stashing changes:</b> Use git stash to temporarily save changes without committing them, allowing you to switch branches or work on something else.</li>
+                        <li><b>Tagging:</b> Tags mark important points in your project's history (like releases). Learn to create and manage tags with git tag.</li>
+                        <li><b>Cherry-picking:</b> This command allows you to apply specific commits from one branch into another, even without merging all the changes.
+                        </li>
+                    </ul>
+                    <li><b>Collaborating in Teams with Git</b></li>
+                    <p>Learning how to collaborate on projects with others using Git is essential for team development. Some useful concepts for team collaboration include:</p>
+                    <ul>
+                        <li><b>Handling merge conflicts:</b>Explore strategies to resolve conflicts that arise when multiple people make changes to the same file.</li>
+                        <li><b>Code reviews and pull requests:</b> Learn how to create and review pull requests (especially useful on GitHub), an essential process for maintaining high-quality code in a collaborative environment.</li>
+                        <li><b>Branching strategies:</b>Understand different branching models like GitFlow, Feature Branches, and Trunk-based development for organizing work on larger projects.</li>
+                    </ul>
+                    <li><b>Git Best Practices</b></li>
+                    <p>Once you've mastered the technical aspects of Git, it's useful to learn the best practices for maintaining a clean and efficient repository:</p>
+                    <ul>
+                        <li><b>Writing clear commit messages:</b>Continue to refine your commit messages, following conventions such as the Conventional Commits format.</li>
+                        <li><b>Keeping your history clean:</b>Practice techniques like squashing commits and interactive rebasing to maintain a readable and concise history.</li>
+                        <li><b>Creating meaningful branches:</b>Use well-named and organized branches to keep track of different features, hotfixes, or releases.</li>
+                    </ul>
+                    <li><b>Contributing to Open Source Projects</b></li>
+                    <p>Once you're comfortable with Git and GitHub (or other remote hosting platforms), a great next step is to contribute to open-source projects:</p>
+                    <ul>
+                        <li>Look for beginner-friendly repositories with labels like good first issue or help wanted.</li>
+                        <li>Fork the repository, make your changes, and submit a pull request to contribute back to the original project.</li>
+                    </ul>
+                    </ol>
+                </div>
+</body>
+</html>
